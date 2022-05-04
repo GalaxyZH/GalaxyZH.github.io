@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo系列——(三) 将Hexo部署到Git上 | 凛冬散尽，星河长明</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="将本地搭建的博客部署到github上（我一直以为搭个博客需要买个云服务器主机的…gitee好像也可以，以后再看看怎么弄。俄罗斯的github被禁了，以后我们打湾湾会不会也被禁，啧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo系列——(三) 将Hexo部署到Git上">
+<meta property="og:url" content="http://example.com/2022/05/04/Hexo-3/index.html">
+<meta property="og:site_name" content="凛冬散尽，星河长明">
+<meta property="og:description" content="将本地搭建的博客部署到github上（我一直以为搭个博客需要买个云服务器主机的…gitee好像也可以，以后再看看怎么弄。俄罗斯的github被禁了，以后我们打湾湾会不会也被禁，啧">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/05/04/Hexo-3/2.png">
+<meta property="og:image" content="http://example.com/2022/05/04/Hexo-3/1.png">
+<meta property="og:image" content="http://example.com/2022/05/04/Hexo-3/3.png">
+<meta property="og:image" content="http://example.com/2022/05/04/Hexo-3/4.png">
+<meta property="og:image" content="http://example.com/2022/05/04/Hexo-3/5.png">
+<meta property="og:image" content="http://example.com/2022/05/04/Hexo-3/6.png">
+<meta property="og:image" content="http://example.com/2022/05/04/Hexo-3/7.png">
+<meta property="article:published_time" content="2022-05-04T09:17:44.000Z">
+<meta property="article:modified_time" content="2022-05-04T12:28:51.257Z">
+<meta property="article:author" content="GalaxyZH">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/05/04/Hexo-3/2.png">
+  
+    <link rel="alternate" href="/atom.xml" title="凛冬散尽，星河长明" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">凛冬散尽，星河长明</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Hexo-3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/04/Hexo-3/" class="article-date">
+  <time class="dt-published" datetime="2022-05-04T09:17:44.000Z" itemprop="datePublished">2022-05-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Hexo系列——(三) 将Hexo部署到Git上
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>将本地搭建的博客部署到github上（我一直以为搭个博客需要买个云服务器主机的…gitee好像也可以，以后再看看怎么弄。俄罗斯的github被禁了，以后我们打湾湾会不会也被禁，啧</p>
+<span id="more"></span>
+
+<hr>
+<h1 id="一、本地连接Github"><a href="#一、本地连接Github" class="headerlink" title="一、本地连接Github"></a>一、本地连接Github</h1><p><strong>需要先注册一个Github账户</strong></p>
+<h2 id="1-配置用户名和邮箱"><a href="#1-配置用户名和邮箱" class="headerlink" title="1.配置用户名和邮箱"></a>1.配置用户名和邮箱</h2><p>打开终端，输入指令，替换自己的github用户名和邮箱：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;用户名&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;邮箱&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-生成密钥SSH-key："><a href="#2-生成密钥SSH-key：" class="headerlink" title="2.生成密钥SSH key："></a>2.生成密钥SSH key：</h2><p>在推送文章到Github时，使用ssh进行验证可以免于输入账户和密码。</p>
+<p>键入以下命令，然后根据提示输入密码两次，这个密码是本地 Git 与远程 Git 通信时要用到的，要牢牢记住：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;邮箱&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>生成的公钥会保存在~&#x2F;.ssh&#x2F;id_ras.pub中，使用<code>cat ~/.ssh/id_ras.pub</code>查看，<strong>我们全部复制，等会要用。</strong></p>
+<p><img src="/2022/05/04/Hexo-3/2.png"></p>
+<h2 id="3-添加公钥到Github的账号"><a href="#3-添加公钥到Github的账号" class="headerlink" title="3.添加公钥到Github的账号"></a>3.添加公钥到Github的账号</h2><p>打开<a target="_blank" rel="noopener" href="https://github.com/">Github</a>，在头像下面点击<code>Settings</code></p>
+<p><img src="/2022/05/04/Hexo-3/1.png"></p>
+<p>在左边找到并点击<code>SSH and GPG keys</code>，新建一个SSH keys，名字任意取，然后将刚刚的公钥内容全部粘贴进去。点击<code>Add SSH key</code>添加完成。</p>
+<p><img src="/2022/05/04/Hexo-3/3.png"></p>
+<h2 id="4-验证ssh的配置是否成功。"><a href="#4-验证ssh的配置是否成功。" class="headerlink" title="4.验证ssh的配置是否成功。"></a>4.验证ssh的配置是否成功。</h2><p>输入ssh -T <a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;">&#103;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;</a>，验证密码，出现你的github用户名代表配置成功。</p>
+<p><img src="/2022/05/04/Hexo-3/4.png"></p>
+<h1 id="二、创建仓库"><a href="#二、创建仓库" class="headerlink" title="二、创建仓库"></a>二、创建仓库</h1><p>在github上新建一个仓库并初始化用于上传我们的本地站点。</p>
+<p>点击+号，选择<code>New repository</code></p>
+<p><img src="/2022/05/04/Hexo-3/5.png"></p>
+<p>取一个仓库名，我直接使用我的用户名，但要注意，一定要在结尾加上<code>.github.io</code></p>
+<p><img src="/2022/05/04/Hexo-3/6.png"></p>
+<p>点击Settings&gt;Pages，这个链接就是你的博客地址，点进去是404，这是因为现在我们的Hexo还没部署上去，网站什么都没有。</p>
+<p><img src="/2022/05/04/Hexo-3/7.png"></p>
+<h1 id="三、依赖与配置文件"><a href="#三、依赖与配置文件" class="headerlink" title="三、依赖与配置文件"></a>三、依赖与配置文件</h1><h2 id="1-依赖"><a href="#1-依赖" class="headerlink" title="1.依赖"></a>1.依赖</h2><p>为了正常部署到远程 Git 仓库，我们还需要先安装一个 Hexo 插件 hexo-deployer-git。</p>
+<p>在Hexo站点文件夹根目录下打开命令行，键入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2.修改配置文件"></a>2.修改配置文件</h2><p>使用文本编辑器打开站点文件夹根目录下的 _config.yml 文件，修改其 deploy 字段之后的内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@github.com:galaxyzh/galaxyzh.github.io.git</span><br><span class="line">  brandh: master</span><br><span class="line">  messge:</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/05/04/Hexo-3/" data-id="cl2rk5ry70003kwjx13fxdf18" data-title="Hexo系列——(三) 将Hexo部署到Git上" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/29/Hexo%E4%B8%AD%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Hexo中图片无法加载</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 10px;">虚拟机</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/04/Hexo-3/">Hexo系列——(三) 将Hexo部署到Git上</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/29/Hexo%E4%B8%AD%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/">Hexo中图片无法加载</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/29/Hexo-2/">Hexo系列——(二) 使用Hexo发博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/29/Hexo-1/">Hexo系列——(一) Hexo的安装与使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/28/test/">虚拟机安装Ubuntu20-04</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 GalaxyZH<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
